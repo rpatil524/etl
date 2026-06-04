@@ -81,6 +81,10 @@ public final class Virtuoso implements Component, SequentialExecution {
         if (configuration.isCheckpoint()) {
             checkpoint();
         }
+        if (configuration.isRebuildFulltextIndex()) {
+            LOG.debug("Running rebuild index command.");
+            sqlExecutor.updateFulltextIndex();
+        }
         progressReport.done();
         clearLoadList();
     }

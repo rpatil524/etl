@@ -35,6 +35,9 @@ public class VirtuosoConfiguration {
     @RdfToPojo.Property(iri = VirtuosoVocabulary.CHECKPOINT)
     private boolean checkpoint = false;
 
+    @RdfToPojo.Property(iri = VirtuosoVocabulary.REBUILD_FULLTEXT_INDEX)
+    private boolean rebuildFulltextIndex = false;
+
     public VirtuosoConfiguration() {
     }
 
@@ -116,6 +119,14 @@ public class VirtuosoConfiguration {
 
     public void setCheckpoint(boolean checkpoint) {
         this.checkpoint = checkpoint;
+    }
+
+    public boolean isRebuildFulltextIndex() {
+        return rebuildFulltextIndex;
+    }
+
+    public void setRebuildFulltextIndex(boolean rebuildFulltextIndex) {
+        this.rebuildFulltextIndex = rebuildFulltextIndex;
     }
 
 }

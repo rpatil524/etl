@@ -51,6 +51,11 @@
                ng-hide="dialog.checkpoint.hide">
         Execute checkpoint
     </md-switch>
+    <md-switch ng-model="dialog.rebuildFulltextIndex.value"
+               ng-disabled="dialog.rebuildFulltextIndex.disabled || dialog.rebuildFulltextIndex.inherit"
+               ng-hide="dialog.rebuildFulltextIndex.hide">
+        Rebuild fulltext index
+    </md-switch>
     <md-input-container class="md-block" ng-hide="dialog.loaderCount.hide">
         <label>Number of loaders to use</label>
         <input ng-model="dialog.loaderCount.value"

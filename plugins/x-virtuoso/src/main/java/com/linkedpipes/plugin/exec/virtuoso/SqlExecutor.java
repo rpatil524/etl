@@ -21,6 +21,9 @@ class SqlExecutor {
     private static final String SQL_QUERY_FINISHED =
             "select count(*) from DB.DBA.load_list where ll_file like ? and ll_state = 2";
 
+    private static final String SQL_QUERY_UPDATE_FULLTEXT_INDEX =
+            "DB.DBA.VT_INC_INDEX_DB_DBA_RDF_OBJ()";
+
     public static final String SQL_LOAD = "rdf_loader_run()";
 
     public static final String SQL_CHECKPOINT = "checkpoint";
@@ -168,6 +171,18 @@ class SqlExecutor {
         } catch (SQLException ex) {
             throw new LpException(
                     "Can't load data.", ex);
+        }
+    }
+
+    public void updateFulltextIndex() throws LpException {
+        try (Connection connection = getSqlConnection()) {
+            try (PreparedStatement statement = prepareStatement(
+                    connection, SQL_QUERY_UPDATE_FULLTEXT_INDEX)) {
+                statement.executeQuery();
+            }
+        } catch (SQLException | LpException ex) {
+            throw new LpException(
+                    "Can't initialize fulltext index rebuild.", ex);
         }
     }
 
