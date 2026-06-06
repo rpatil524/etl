@@ -30,7 +30,13 @@ public final class VirtuosoVocabulary {
 
     public static final String CHECKPOINT = PREFIX + "checkpoint";
 
-    public static final String REBUILD_FULLTEXT_INDEX =
-            PREFIX + "rebuildFulltextIndex";
+    public static final String FULLTEXT_INDEX =
+            PREFIX + "fulltextIndex";
+
+    public static final String REBUILD_INDEX =
+            PREFIX + "rebuild";
+
+    public static final String UPDATE_INDEX =
+            PREFIX + "update";
 
 }

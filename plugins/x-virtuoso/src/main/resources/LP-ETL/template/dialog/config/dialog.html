@@ -62,10 +62,14 @@
                ng-disabled="dialog.loaderCount.disabled || dialog.loaderCount.inherit"
                type="number" placeholder="1" min="1">
     </md-input-container>
-    <md-input-container class="md-block" ng-hide="dialog.updateInterval.hide">
+    <md-input-container class="md-block" ng-hide="dialog.fulltextIndex.hide">
         <label>Status update interval in seconds</label>
-        <input type="number" ng-model="dialog.updateInterval.value"
-               ng-disabled="dialog.updateInterval.disabled || dialog.updateInterval.inherit"
-               placeholder="5" min="1">
+        <md-select ng-model="dialog.fulltextIndex.value"
+                   ng-disabled="dialog.fulltextIndex.disabled || dialog.fulltextIndex.inherit"
+                   placeholder="Select fulltext index update operation">
+            <md-option value="">No action</md-option>
+            <md-option value="http://plugins.linkedpipes.com/ontology/x-virtuoso#update">Update</md-option>
+            <md-option value="http://plugins.linkedpipes.com/ontology/x-virtuoso#rebuild">Rebuild</md-option>
+        </md-select>
     </md-input-container>
 </div>

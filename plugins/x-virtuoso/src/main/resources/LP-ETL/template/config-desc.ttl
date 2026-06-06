@@ -14,7 +14,7 @@
         <http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/query> ,
         <http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/loaderCount> ,
         <http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/checkpoint> ,
-        <http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/rebuildFulltextIndex> .
+        <http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/fulltextIndex> .
 
 <http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/uri>
     a config:ConfigurationMember ;
@@ -74,7 +74,7 @@
     config:property <http://plugins.linkedpipes.com/ontology/x-virtuoso#checkpoint> ;
     config:control <http://plugins.linkedpipes.com/ontology/x-virtuoso#checkpointControl> .
 
-<http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/rebuildFulltextIndex>
+<http://linkedpipes.com/resources/components/x-virtuoso/0.0.0/configuration/desc/fulltextIndex>
     a config:ConfigurationMember ;
-    config:property <http://plugins.linkedpipes.com/ontology/x-virtuoso#rebuildFulltextIndex> ;
-    config:control <http://plugins.linkedpipes.com/ontology/x-virtuoso#rebuildFulltextIndexControl> .
+    config:property <http://plugins.linkedpipes.com/ontology/x-virtuoso#fulltextIndex> ;
+    config:control <http://plugins.linkedpipes.com/ontology/x-virtuoso#fulltextIndexControl> .

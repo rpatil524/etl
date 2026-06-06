@@ -48,9 +48,9 @@ define([], function () {
             "$type": "bool",
             "$label": "Execute checkpoint"
         },
-        "rebuildFulltextIndex": {
-            "$type": "bool",
-            "$label": "Rebuild fulltext index"
+        "fulltextIndex": {
+            "$type": "iri",
+            "$label": "Fulltext index update"
         }
     };
 
