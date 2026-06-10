@@ -84,4 +84,21 @@ public class Rdf4jMemorySource extends Rdf4jSource {
         return result;
     }
 
+    @Override
+    protected List<Resource> reverseProperty(
+            Resource graph, Value value, String property) {
+        IRI predicate = valueFactory.createIRI(property);
+        List<Resource> result = new ArrayList<>();
+        Iterable<Statement> statements;
+        if (this.configuration.graphAware) {
+            statements = model.getStatements(null, predicate, value, graph);
+        } else {
+            statements = model.getStatements(null, predicate, value);
+        }
+        for (var statement : statements) {
+            result.add(statement.getSubject());
+        }
+        return result;
+    }
+
 }

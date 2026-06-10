@@ -114,6 +114,30 @@ public class Rdf4jChunkedSource
     }
 
     @Override
+    protected List<Resource> reverseProperty(
+            Resource graph, Value value, String property) {
+        if (current == null) {
+            return Collections.emptyList();
+        }
+        if (!current.graph.equals(graph)) {
+            LOG.warn("Requested data from non-root graph.");
+            return Collections.emptyList();
+        }
+        IRI predicate = valueFactory.createIRI(property);
+        List<Resource> result = new ArrayList<>();
+        for (var statement : current.statements) {
+            if (!predicate.equals(statement.getPredicate())) {
+                continue;
+            }
+            if (!value.equals(statement.getObject())) {
+                continue;
+            }
+            result.add(statement.getSubject());
+        }
+        return result;
+    }
+
+    @Override
     public ReferenceSource split() throws OperationFailed {
         throw new OperationFailed("Can't split root iterator.");
     }

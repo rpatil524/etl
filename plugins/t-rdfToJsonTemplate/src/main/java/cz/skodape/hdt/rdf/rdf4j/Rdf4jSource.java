@@ -155,7 +155,31 @@ public abstract class Rdf4jSource implements PropertySource {
     @Override
     public ArrayReference reverseProperty(Reference reference, String property)
             throws OperationFailed {
-        throw new OperationFailed("Operation not supported.");
+        Rdf4jReference rdfReference = asRdfReference(reference);
+        if (rdfReference instanceof Rdf4jResource) {
+            Rdf4jResource resourceReference = (Rdf4jResource) rdfReference;
+            final Resource graph = resourceReference.getGraph();
+            final Value value = resourceReference.getResource();
+            List<Rdf4jReference> result =
+                    reverseProperty(graph, value, property)
+                            .stream()
+                            .map((resource) -> this.wrap(graph, resource))
+                            .collect(Collectors.toList());
+            return new Rdf4jArray(graph, result);
+        }
+        if (rdfReference instanceof Rdf4jLiteral) {
+            throw new OperationFailed("Operation not supported for literal value.");
+        }
+        if (rdfReference instanceof Rdf4jPrimitive) {
+            throw new OperationFailed("Operation not supported for primitive value.");
+        }
+        throw new OperationFailed(
+                "Operation not supported for: "
+                        + rdfReference.getClass().getName());
     }
+
+    protected abstract List<Resource> reverseProperty(
+            Resource graph, Value value, String property)
+            throws OperationFailed;
 
 }
