@@ -84,9 +84,11 @@ public final class Virtuoso implements Component, SequentialExecution {
         // Update index
         switch(configuration.getFulltextIndexUpdate()) {
             case VirtuosoVocabulary.REBUILD_INDEX:
+                LOG.info("Rebuilding fulltext index.");
                 sqlExecutor.rebuildFulltextIndex();
                 break;
             case VirtuosoVocabulary.UPDATE_INDEX:
+                LOG.info("Updating fulltext index.");
                 sqlExecutor.updateFulltextIndex();
                 break;
             case "":

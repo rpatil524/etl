@@ -51,11 +51,6 @@
                ng-hide="dialog.checkpoint.hide">
         Execute checkpoint
     </md-switch>
-    <md-switch ng-model="dialog.rebuildFulltextIndex.value"
-               ng-disabled="dialog.rebuildFulltextIndex.disabled || dialog.rebuildFulltextIndex.inherit"
-               ng-hide="dialog.rebuildFulltextIndex.hide">
-        Rebuild fulltext index
-    </md-switch>
     <md-input-container class="md-block" ng-hide="dialog.loaderCount.hide">
         <label>Number of loaders to use</label>
         <input ng-model="dialog.loaderCount.value"
@@ -63,7 +58,7 @@
                type="number" placeholder="1" min="1">
     </md-input-container>
     <md-input-container class="md-block" ng-hide="dialog.fulltextIndex.hide">
-        <label>Status update interval in seconds</label>
+        <label>Fulltext index</label>
         <md-select ng-model="dialog.fulltextIndex.value"
                    ng-disabled="dialog.fulltextIndex.disabled || dialog.fulltextIndex.inherit"
                    placeholder="Select fulltext index update operation">
